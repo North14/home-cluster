@@ -5,5 +5,9 @@ metadata:
   name: cluster-settings
   namespace: flux-system
 data:
+  NFS_ADDR: 10.0.10.10
+  #
   METALLB_LB_RANGE: 10.0.10.100-10.0.10.199
   METALLB_TRAEFIK_ADDR: 10.0.10.199
+  #
+  CLUSTER_LB_QBITTORRENT: 10.0.10.198
