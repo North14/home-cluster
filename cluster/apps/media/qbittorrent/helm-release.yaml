@@ -65,7 +65,7 @@ spec:
           nfs:
             server: "${NFS_ADDR}"
             path: /srv/nfs/torrents
-          mountPath: /torrents
+        mountPath: /torrents
       media:
         enabled: true
         type: custom
@@ -73,7 +73,7 @@ spec:
           nfs:
             server: "${NFS_ADDR}"
             path: /srv/nfs/media
-          mountPath: /media
+        mountPath: /media
     resources:
       requests:
         memory: 250Mi
