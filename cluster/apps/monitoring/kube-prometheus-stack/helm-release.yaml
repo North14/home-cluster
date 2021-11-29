@@ -27,6 +27,7 @@ spec:
         pathType: Prefix
         ingressClassName: "traefik"
         annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
           hajimari.io/name: "grafana"
           hajimari.io/enable: "true"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
@@ -53,6 +54,7 @@ spec:
         pathType: Prefix
         ingressClassName: "traefik"
         annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
           hajimari.io/name: "prometheus"
           hajimari.io/enable: "true"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
