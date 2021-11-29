@@ -27,6 +27,7 @@ spec:
           - default
           - networking
           - media
+          - monitoring
       name: "you"
       customApps:
         - name: Some External Cluster Service
