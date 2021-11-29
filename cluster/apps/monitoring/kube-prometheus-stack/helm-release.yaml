@@ -1,0 +1,53 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: kube-prometheus-stack
+  namespace: monitoring
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://prometheus-community.github.io/helm-charts
+      chart: kube-prometheus-stack
+      version: 21.0.0
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    alertmanager:
+      enabled: false
+    grafana:
+      enabled: true
+    kubelet:
+      enabled: true
+    kubeApiServer:
+      enabled: true
+    kubeControllerManager:
+      enabled: true
+    kubeScheduler:
+      enabled: true
+    kubeProxy:
+      enabled: true
+    kubeEtcd:
+      enabled: true
+    prometheus:
+      ingress:
+        enabled: true
+        ingressClassName: "traefik"
+        annotations:
+          hajimari.io/name: "prometheus"
+          hajimari.io/enable: "true"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+        hosts:
+          - host: "prometheus.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - "prometheus.${SECRET_DOMAIN}"
+    prometheusSpec:
+      retention: 48h
