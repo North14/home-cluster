@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://north14.github.io/helm-charts/
       chart: liquidsoap
-      version: 2.1.0
+      version: 1.0.0
       sourceRef:
         kind: HelmRepository
         name: north14-charts
