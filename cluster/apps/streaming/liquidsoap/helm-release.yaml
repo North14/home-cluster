@@ -1,0 +1,21 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: liquidsoap
+  namespace: streaming
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://north14.github.io/helm-charts/
+      chart: liquidsoap
+      version: 1.0.0
+      sourceRef:
+        kind: HelmRepository
+        name: north14-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    env:
+      TZ: "Europe/Stockholm"
