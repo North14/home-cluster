@@ -28,9 +28,9 @@ spec:
         enabled: false
       liquidsoap:
         enabled: false
-      resources:
-        requests:
-          memory: 200Mi
-          cpu: 100m
-        limits:
-          memory: 5000Mi
+    resources:
+      requests:
+        memory: 200Mi
+        cpu: 100m
+      limits:
+        memory: 5000Mi
