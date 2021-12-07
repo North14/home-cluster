@@ -19,18 +19,18 @@ spec:
   values:
     env:
       TZ: "Europe/Stockholm"
-  persistence:
-    config:
-      enabled: false
-    storage:
-      enabled: false
-    watch:
-      enabled: false
-    liquidsoap:
-      enabled: false
-    resources:
-      requests:
-        memory: 200Mi
-        cpu: 600m
-      limits:
-        memory: 5000Mi
+    persistence:
+      config:
+        enabled: false
+      storage:
+        enabled: false
+      watch:
+        enabled: false
+      liquidsoap:
+        enabled: false
+      resources:
+        requests:
+          memory: 200Mi
+          cpu: 600m
+        limits:
+          memory: 5000Mi
