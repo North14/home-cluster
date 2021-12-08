@@ -74,8 +74,24 @@ spec:
             server: "${NFS_ADDR}"
             path: /srv/nfs/media
         mountPath: /media
-    podAnnotations:
-      setGateway: "true"
+      shared:
+        enabled: true
+        type: emptyDir
+        mountPath: /shared
+    addons:
+      vpn:
+        enabled: true
+        env:
+          KILLSWITCH: "true"
+        configFileSecret: wireguard-vpnconfig
+      scripts:
+        up: |-
+          #!/bin/bash
+          echo "connected" > /shared/vpnstatus
+
+        down: |-
+          #!/bin/bash
+          echo "disconnected" > /shared/vpnstatus
     resources:
       requests:
         memory: 250Mi
