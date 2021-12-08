@@ -83,5 +83,3 @@ spec:
       gatewayDefault: false
       gatewayLabel: setGateway
       gatewayAnnotation: setGateway
-      namespaceSelector:
-        label: "vpn-routed-gateway"
