@@ -7,3 +7,4 @@ resources:
   - media.yaml
   - monitoring.yaml
   - streaming.yaml
+  - vpn-gateway.yaml
