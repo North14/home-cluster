@@ -60,6 +60,13 @@ spec:
             server: "${NFS_ADDR}"
             path: /srv/nfs/media
         mountPath: /media
+    probes:
+      liveness:
+        custom: false
+        spec:
+          periodSeconds: 30
+          timeoutSeconds: 3
+          failureThreshold: 10
     resources:
       requests:
         memory: 250Mi
