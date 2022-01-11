@@ -8,7 +8,7 @@ spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://prometheus-community.github.io/helm-charts
+      # renovate: registryUrl=https://thanos-community.github.io/helm-charts
       chart: thanos
       version: 27.2.0
       sourceRef:
@@ -25,7 +25,7 @@ spec:
       replicaLabels:
         - replica
       dnsDiscovery:
-        sidecarsService: prometheus-thanos-discovery
+        sidecarsService: thanos-thanos-discovery
         sidecarsNamespace: monitoring
       ingress:
         enabled: true
@@ -33,15 +33,15 @@ spec:
         ingressClassName: "traefik"
         annotations:
           cert-manager.io/cluster-issuer: "letsencrypt-production"
-          hajimari.io/name: "prometheus"
+          hajimari.io/name: "thanos"
           hajimari.io/enable: "true"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         hosts:
-          - "prometheus.${SECRET_DOMAIN}"
+          - "thanos.${SECRET_DOMAIN}"
         tls:
           - hosts:
-            - "prometheus.${SECRET_DOMAIN}"
-            secretName: "prometheus-tls"
+            - "thanos.${SECRET_DOMAIN}"
+            secretName: "thanos-tls"
     queryFrontend:
       enabled: false
     bucketweb:
