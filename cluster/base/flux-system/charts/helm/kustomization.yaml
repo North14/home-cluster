@@ -23,3 +23,4 @@ resources:
   - traefik-charts.yaml
   - weaveworks-kured-charts.yaml
   - north14-charts.yaml
+  - robusta-charts.yaml
