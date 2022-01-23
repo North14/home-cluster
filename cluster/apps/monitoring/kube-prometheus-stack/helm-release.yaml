@@ -21,18 +21,38 @@ spec:
       enabled: false
     grafana:
       enabled: false
+    prometheus-node-exporter:
+      fullnameOverride: node-exporter
+      prometheus:
+        monitor:
+          enabled: true
+          relabelings:
+            - action: replace
+              regex: (.*)
+              replacement: $1
+              sourceLabels:
+                - __meta_kubernetes_pod_node_name
+              targetLabel: kubernetes_node
     kubelet:
       enabled: true
     kubeApiServer:
       enabled: true
     kubeControllerManager:
       enabled: true
+      endpoints:
+        - 10.0.10.10
     kubeScheduler:
       enabled: true
+      endpoints:
+        - 10.0.10.10
     kubeProxy:
       enabled: true
+      endpoints:
+        - 10.0.10.10
     kubeEtcd:
       enabled: true
+      endpoints:
+        - 10.0.10.10
     prometheus:
       ingress:
         enabled: true
