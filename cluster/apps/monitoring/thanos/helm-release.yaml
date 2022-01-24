@@ -27,21 +27,19 @@ spec:
       dnsDiscovery:
         sidecarsService: prometheus-thanos-discovery
         sidecarsNamespace: monitoring
-    ingress:
-      enabled: true
-      pathType: Prefix
-      ingressClassName: "traefik"
-      annotations:
-        cert-manager.io/cluster-issuer: "letsencrypt-production"
-        hajimari.io/name: "thanos"
-        hajimari.io/enable: "true"
-        traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-      hosts:
-        - "thanos.${SECRET_DOMAIN}"
-      tls:
-        - hosts:
-            - "thanos.${SECRET_DOMAIN}"
-          secretName: "thanos-tls"
+      ingress:
+        enabled: true
+        pathType: Prefix
+        ingressClassName: "traefik"
+        annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+        hosts:
+          - "thanos.${SECRET_DOMAIN}"
+        tls:
+          - hosts:
+              - "thanos.${SECRET_DOMAIN}"
+            secretName: "thanos-tls"
     existingObjstoreSecret: thanos-objstore
     queryFrontend:
       enabled: false
