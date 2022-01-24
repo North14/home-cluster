@@ -71,6 +71,20 @@ spec:
                 pathType: Prefix
                 service:
                   port: 9001
+        tls:
+          - hosts:
+              - "minio.${SECRET_DOMAIN}"
+            secretName: "minio-tls"
+      s3:
+        enabled: true
+        ingressClassName: "traefik"
+        annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
+          hajimari.io/name: "s3"
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "cloud-download"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+        hosts:
           - host: "s3.${SECRET_DOMAIN}"
             paths:
               - path: /
@@ -79,9 +93,8 @@ spec:
                   port: 9000
         tls:
           - hosts:
-              - "minio.${SECRET_DOMAIN}"
               - "s3.${SECRET_DOMAIN}"
-            secretName: "minio-tls"
+            secretName: "s3-tls"
 
     resources:
       requests:
