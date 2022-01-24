@@ -8,4 +8,4 @@ resources:
   - jackett
   - readarr
   - prowlarr
-  - overserr
+  - overseerr
