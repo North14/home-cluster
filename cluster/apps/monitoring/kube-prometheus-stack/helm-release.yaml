@@ -39,20 +39,12 @@ spec:
       enabled: true
     kubeControllerManager:
       enabled: true
-      endpoints:
-        - 10.0.10.10
     kubeScheduler:
       enabled: true
-      endpoints:
-        - 10.0.10.10
     kubeProxy:
       enabled: true
-      endpoints:
-        - 10.0.10.10
     kubeEtcd:
       enabled: true
-      endpoints:
-        - 10.0.10.10
     prometheus:
       ingress:
         enabled: true
