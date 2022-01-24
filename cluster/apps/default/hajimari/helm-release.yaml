@@ -29,6 +29,13 @@ spec:
           - media
           - monitoring
       name: "you"
+      customApps:
+        - name: Minio
+          url: "minio.${SECRET_DOMAIN}"
+        - name: Thanos
+          url: "thanos.${SECRET_DOMAIN}"
+        - name: Loki
+          url: "loki.${SECRET_DOMAIN}"
       groups:
         - name: Piracy
           links:
