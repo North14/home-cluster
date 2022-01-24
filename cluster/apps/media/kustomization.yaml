@@ -9,3 +9,4 @@ resources:
   - readarr
   - prowlarr
   - overseerr
+  - plex
