@@ -6,5 +6,5 @@ metadata:
   namespace: flux-system
 spec:
   interval: 15m
-  url: https://k8s-at-home.com/charts/
+  url: https://library-charts.k8s-at-home.com
   timeout: 3m
