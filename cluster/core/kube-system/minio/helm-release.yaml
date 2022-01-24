@@ -20,6 +20,7 @@ spec:
     image:
       repository: quay.io/minio/minio
       tag: RELEASE.2022-01-08T03-11-54Z
+    nameOverride: "minio"
     env:
       TZ: "Europe/Stockholm"
       MINIO_ROOT_USER: {SECRET_USER_MINIO}
