@@ -8,12 +8,12 @@ spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://charts.min.io
-      chart: minio
-      version: 3.4.6
+      # renovate: registryUrl=https://library-charts.k8s-at-home.com
+      chart: common
+      version: 4.3.0
       sourceRef:
         kind: HelmRepository
-        name: minio-charts
+        name: k8s-at-home-library-charts
         namespace: flux-system
       interval: 5m
   values:
@@ -22,9 +22,8 @@ spec:
       tag: RELEASE.2022-01-08T03-11-54Z
     env:
       TZ: "Europe/Stockholm"
-    rootUser: {SECRET_USER_MINIO}
-    rootPassword: {SECRET_PASS_MINIO}
-
+      MINIO_ROOT_USER: {SECRET_USER_MINIO}
+      MINIO_ROOT_PASSWORD: {SECRET_PASS_MINIO}
     persistence:
       config:
         enabled: true
@@ -42,27 +41,26 @@ spec:
             server: "${NFS_ADDR}"
             path: /srv/nfs/minio
         mountPath: /data
-
+    args:
+      - server
+      - /data
+      - --console-address
+      - :9001
     service:
       main:
-        enabled: true
-        type: LoadBalancer
         ports:
           http:
+            enabled: true
             port: 9001
           api:
+            enabled: true
             port: 9000
-        externalTrafficPolicy: Local
-
     ingress:
       main:
         enabled: true
         ingressClassName: "traefik"
         annotations:
           cert-manager.io/cluster-issuer: "letsencrypt-production"
-          hajimari.io/name: "minio"
-          hajimari.io/enable: "true"
-          hajimari.io/icon: "cloud-download"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         hosts:
           - host: "minio.${SECRET_DOMAIN}"
@@ -71,20 +69,6 @@ spec:
                 pathType: Prefix
                 service:
                   port: 9001
-        tls:
-          - hosts:
-              - "minio.${SECRET_DOMAIN}"
-            secretName: "minio-tls"
-      s3:
-        enabled: true
-        ingressClassName: "traefik"
-        annotations:
-          cert-manager.io/cluster-issuer: "letsencrypt-production"
-          hajimari.io/name: "s3"
-          hajimari.io/enable: "true"
-          hajimari.io/icon: "cloud-download"
-          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-        hosts:
           - host: "s3.${SECRET_DOMAIN}"
             paths:
               - path: /
@@ -93,9 +77,9 @@ spec:
                   port: 9000
         tls:
           - hosts:
+              - "minio.${SECRET_DOMAIN}"
               - "s3.${SECRET_DOMAIN}"
-            secretName: "s3-tls"
-
+            secretName: "minio-tls"
     resources:
       requests:
         memory: 100Mi
