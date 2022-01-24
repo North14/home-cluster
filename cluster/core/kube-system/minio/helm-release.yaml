@@ -21,8 +21,8 @@ spec:
     nameOverride: "minio"
     env:
       TZ: "Europe/Stockholm"
-      MINIO_ROOT_USER: {SECRET_USER_MINIO}
-      MINIO_ROOT_PASSWORD: {SECRET_PASS_MINIO}
+      MINIO_ROOT_USER: "${SECRET_USER_MINIO}"
+      MINIO_ROOT_PASSWORD: "${SECRET_PASS_MINIO}"
     persistence:
       config:
         enabled: true
