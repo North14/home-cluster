@@ -56,7 +56,7 @@ spec:
             secretName: "torrent-tls"
     persistence:
       config:
-        enabled: false
+        enabled: true
         existingClaim: qbittorrent-config
       torrents:
         enabled: true
@@ -80,7 +80,7 @@ spec:
         mountPath: /shared
     addons:
       vpn:
-        enabled: true
+        enabled: false
         type: wireguard
         env:
           KILLSWITCH: "true"
