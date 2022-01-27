@@ -56,7 +56,7 @@ spec:
             secretName: "torrent-tls"
     persistence:
       config:
-        enabled: true
+        enabled: false
         existingClaim: qbittorrent-config
       torrents:
         enabled: true
