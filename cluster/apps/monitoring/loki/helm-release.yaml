@@ -19,24 +19,18 @@ spec:
     ingress:
       enabled: true
       annotations:
-          cert-manager.io/cluster-issuer: "letsencrypt-production"
-          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+        kubernetes.io/ingress.class: traefik
+        cert-manager.io/cluster-issuer: "letsencrypt-production"
+        traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
       hosts:
         - host: &host "loki.${SECRET_DOMAIN}"
           paths:
             - /
       tls:
-        - hosts:
+        - secretName: "loki-tls"
+          hosts:
             - *host
-    serviceMonitor:
-      enabled: true
     config:
-      limits_config:
-        enforce_metric_name: false
-        reject_old_samples: true
-        reject_old_samples_max_age: 168h
-        ingestion_rate_mb: 16
-        ingestion_burst_size_mb: 24
       storage_config:
         aws:
           bucketnames: loki
@@ -45,51 +39,12 @@ spec:
           secret_access_key: "${SECRET_KEY_MINIO}"
           s3forcepathstyle: true
           insecure: false
-      ruler:
-        storage:
-          type: local
-          local:
-            directory: /rules
-        rule_path: /tmp/scratch
-        ring:
-          kvstore:
-            store: inmemory
-        enable_api: true
-          #     alerting_groups:
-          #       #
-          #       # SMART Failures
-          #       #
-          #       - name: smart-failure
-          #         rules:
-          #           - alert: SmartFailures
-          #             expr: |
-          #               sum by (hostname) (count_over_time({hostname=~".+"} | json | _SYSTEMD_UNIT = "smartmontools.service" !~ "(?i)previous self-test completed without error" !~ "(?i)Prefailure" |~ "(?i)(error|fail)"[2m])) > 0
-          #             for: 10s
-          #             labels:
-          #               severity: critical
-          #               category: logs
-          #             annotations:
-          #               summary: "SMART has reported failures on host {{ $labels.hostname }}"
-          #       #
-          #       # *arr
-          #       #
-          #       - name: arr
-          #         rules:
-          #           - alert: ArrDatabaseIsLocked
-          #             expr: |
-          #               sum by (app) (count_over_time({app=~".*arr"} |~ "(?i)database is locked"[2m])) > 0
-          #             for: 10s
-          #             labels:
-          #               severity: critical
-          #               category: logs
-          #             annotations:
-          #               summary: "{{ $labels.app }} is experiencing locked database issues"
-          #           - alert: ArrDatabaseIsMalformed
-          #             expr: |
-          #               sum by (app) (count_over_time({app=~".*arr"} |~ "(?i)database disk image is malformed"[2m])) > 0
-          #             for: 10s
-          #             labels:
-          #               severity: critical
-          #               category: logs
-          #             annotations:
-          #               summary: "{{ $labels.app }} is experiencing malformed database disk image issues"
+        boltdb_shipper:
+          active_index_directory: /data/loki/index
+          cache_location: /data/loki/index_cache
+          resync_interval: 5s
+          shared_store: s3
+    persistence:
+      enabled: false
+    serviceMonitor:
+      enabled: true
