@@ -16,13 +16,6 @@ spec:
         name: prometheus-community-charts
         namespace: flux-system
       interval: 5m
-  install:
-    createNamespace: true
-    remediation:
-      retries: 3
-  upgrade:
-    remediation:
-      retries: 3
   values:
     alertmanager:
       enabled: false
@@ -48,18 +41,22 @@ spec:
       enabled: true
       endpoints:
         - 10.0.10.10
+        - 10.0.10.11
     kubeScheduler:
       enabled: true
       endpoints:
         - 10.0.10.10
+        - 10.0.10.11
     kubeProxy:
       enabled: true
       endpoints:
         - 10.0.10.10
+        - 10.0.10.11
     kubeEtcd:
       enabled: true
       endpoints:
         - 10.0.10.10
+        - 10.0.10.11
       service:
         enabled: true
         port: 2381
