@@ -35,28 +35,30 @@ spec:
               targetLabel: kubernetes_node
     kubelet:
       enabled: true
+      serviceMonitor:
+        metricRelabelings:
+          - action: replace
+            sourceLabels:
+              - node
+            targetLabel: instance
     kubeApiServer:
       enabled: true
     kubeControllerManager:
       enabled: true
       endpoints:
         - 10.0.10.10
-        - 10.0.10.11
     kubeScheduler:
       enabled: true
       endpoints:
         - 10.0.10.10
-        - 10.0.10.11
     kubeProxy:
       enabled: true
       endpoints:
         - 10.0.10.10
-        - 10.0.10.11
     kubeEtcd:
       enabled: true
       endpoints:
         - 10.0.10.10
-        - 10.0.10.11
       service:
         enabled: true
         port: 2381
