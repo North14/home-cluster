@@ -41,8 +41,6 @@ spec:
       enabled: true
     kubeScheduler:
       enabled: true
-      endpoints:
-        - 10.0.10.10
     kubeProxy:
       enabled: true
     kubeEtcd:
