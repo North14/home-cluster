@@ -37,7 +37,7 @@ spec:
         aws:
           bucketnames: "loki"
           endpoint: "s3.${SECRET_DOMAIN}"
-          secret_access_keyt: "${SECRET_ACCESS_MINIO}"
+          secret_access_key: "${SECRET_ACCESS_MINIO}"
           access_key_id: "${SECRET_KEY_MINIO}"
           s3forcepathstyle: true
           insecure: true
