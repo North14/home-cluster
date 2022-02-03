@@ -31,11 +31,11 @@ spec:
       name: "you"
       customApps:
         - name: Minio
-          url: "minio.${SECRET_DOMAIN}"
-        - name: Thanos
-          url: "thanos.${SECRET_DOMAIN}"
+          url: "https://minio.${SECRET_DOMAIN}"
+          icon: "pail"
         - name: Loki
-          url: "loki.${SECRET_DOMAIN}"
+          url: "https://loki.${SECRET_DOMAIN}"
+          icon: "math-log"
       groups:
         - name: Piracy
           links:
