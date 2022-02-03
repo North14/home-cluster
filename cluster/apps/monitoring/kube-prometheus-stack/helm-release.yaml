@@ -18,7 +18,22 @@ spec:
       interval: 5m
   values:
     alertmanager:
-      enabled: false
+      enabled: true
+      ingress:
+        enabled: true
+        pathType: Prefix
+        ingressClassName: "traefik"
+        annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
+          hajimari.io/name: "alert-manager"
+          hajimari.io/enable: "true"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+        hosts:
+          - "alert-manager.${SECRET_DOMAIN}"
+        tls:
+          - hosts:
+            - "alert-manager.${SECRET_DOMAIN}"
+            secretName: "alert-manager-tls"
     grafana:
       enabled: false
     prometheus-node-exporter:
