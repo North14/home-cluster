@@ -56,6 +56,14 @@ spec:
             sourceLabels:
               - node
             targetLabel: instance
+    kubeApiServer:
+      enabled: true
+    kubeControllerManager:
+      enabled: true
+    kubeScheduler:
+      enabled: true
+    kubeProxy:
+      enabled: true
 #    kubeApiServer:
 #      enabled: true
 #    kubeControllerManager:
