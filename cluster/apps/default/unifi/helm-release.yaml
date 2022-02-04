@@ -19,6 +19,8 @@ spec:
   values:
     env:
       TZ: Europe/Stockholm
+      UNIFI_GID: 1000
+      UNIFI_UID: 1000
     image:
       repository: jacobalberty/unifi
       tag: v6.5.55
