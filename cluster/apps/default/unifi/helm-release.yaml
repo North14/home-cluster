@@ -22,6 +22,13 @@ spec:
     image:
       repository: jacobalberty/unifi
       tag: v6.5.55
+    service:
+      main:
+        type: LoadBalancer
+        annotations:
+          coredns.io/hostname: unifi
+        loadBalancerIP: ${LB_UNIFI}
+        externalTrafficPolicy: Local
     ingress:
       main:
         enabled: true
