@@ -114,6 +114,16 @@ spec:
         insecureSkipVerify: true
     kubeScheduler:
       enabled: true
+      endpoints:
+        - 10.0.10.10
+      service:
+        enabled: true
+        port: 10259
+        targetPort: 10259
+      serviceMonitor:
+        enabled: true
+        https: true
+        insecureSkipVerify: true
     kubeProxy:
       enabled: true
     kubeEtcd:
