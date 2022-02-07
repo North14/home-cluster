@@ -125,7 +125,7 @@ spec:
         https: true
         insecureSkipVerify: true
     kubeProxy:
-      enabled: true
+      enabled: false
     kubeEtcd:
       enabled: false
     prometheus:
