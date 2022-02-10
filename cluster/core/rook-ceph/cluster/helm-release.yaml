@@ -50,10 +50,10 @@ spec:
         nodes:
           - name: "odin"
             devices:
-              - name: "odin--vg-storage"
+              - name: "/dev/odin-vg/storage"
           - name: "frigga"
             devices:
-              - name: "frigga--vg-storage"
+              - name: "/dev/frigga-vg/storage"
     cephBlockPools:
       - name: ceph-blockpool
         spec:
