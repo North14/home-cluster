@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: democratic-iscsi
-  namespace: kube-system
+  namespace: democratic-csi
 spec:
   releaseName: democratic-iscsi
   interval: 5m
