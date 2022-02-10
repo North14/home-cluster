@@ -7,4 +7,3 @@ resources:
   - media.yaml
   - monitoring.yaml
   - vpn-gateway.yaml
-  - democratic-csi.yaml
