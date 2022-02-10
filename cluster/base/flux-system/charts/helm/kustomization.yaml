@@ -25,3 +25,4 @@ resources:
   - weaveworks-kured-charts.yaml
   - north14-charts.yaml
   - robusta-charts.yaml
+  - democratic-csi-charts.yaml
