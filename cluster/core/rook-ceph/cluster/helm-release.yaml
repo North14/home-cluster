@@ -27,14 +27,12 @@ spec:
         annotations:
           cert-manager.io/cluster-issuer: "letsencrypt-production"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-        hosts:
-          - host: "rook.${SECRET_DOMAIN}"
-            paths:
-              - path: /
-                pathType: Prefix
+        host:
+          name: &host "rook.${SECRET_DOMAIN}"
+          path: "/"
         tls:
           - hosts:
-              - "rook.${SECRET_DOMAIN}"
+              - *host
             secretName: "rook-tls"
     cephClusterSpec:
       mgr:
