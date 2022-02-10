@@ -18,6 +18,11 @@ spec:
     - name: rook-ceph
       namespace: rook-ceph
   values:
+    configOverride: |
+      [global]
+      mon_allow_pool_delete = true
+      osd_pool_default_size = 2
+      osd_pool_default_min_size = 2
     toolbox:
       enabled: true
     monitoring:
@@ -33,7 +38,6 @@ spec:
         tls:
           - hosts:
               - "rook.${SECRET_DOMAIN}"
-            secretName: "rook-tls"
     cephClusterSpec:
       mon:
         count: 2
@@ -42,6 +46,7 @@ spec:
       dashboard:
         enabled: true
         urlPrefix: /
+        ssl: false
       storage:
         useAllNodes: false
         useAllDevices: false
