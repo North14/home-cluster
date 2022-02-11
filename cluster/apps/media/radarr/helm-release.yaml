@@ -43,7 +43,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: radarr-config-ceph
+        existingClaim: radarr-config
       torrents:
         enabled: true
         type: custom
