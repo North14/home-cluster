@@ -98,7 +98,7 @@ spec:
       pathType: Prefix
       ingressClassName: "traefik"
       annotations:
-        cert-manager.io/cluster-issuer: "letsencrypt-production"
+        cert-manager.io/cluster-issuer: "letsencrypt-staging"
         hajimari.io/name: "grafana"
         hajimari.io/enable: "true"
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
