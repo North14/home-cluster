@@ -6,8 +6,8 @@ metadata:
   namespace: media
 spec:
   accessModes:
-    - ReadWriteMany
-  storageClassName: nfs-client
+    - ReadWriteOnce
+  storageClassName: ceph-block
   resources:
     requests:
-      storage: 256Mi
+      storage: 512Mi
