@@ -48,10 +48,17 @@ spec:
         urlPrefix: /
         ssl: false
       storage:
-        useAllNodes: true
-        useAllDevices: true
+        useAllNodes: false
+        useAllDevices: false
         config:
           osdsPerDevice: "1"
+        nodes:
+          - name: "odin"
+            devices:
+              - name: "sda4"
+          - name: "frigga"
+            devices:
+              - name: "sda4"
     cephBlockPools:
       - name: ceph-blockpool
         spec:
