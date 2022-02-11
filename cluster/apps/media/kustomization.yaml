@@ -5,7 +5,6 @@ resources:
   - lidarr
   - radarr
   - sonarr
-  - jackett
   - readarr
   - prowlarr
   - overseerr
