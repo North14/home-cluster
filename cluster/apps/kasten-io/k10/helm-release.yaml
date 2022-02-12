@@ -23,6 +23,9 @@ spec:
     global:
       persistence:
         storageClass: ceph-block
+    auth:
+      tokenAuth:
+        enabled: true
     clusterName: k8s
     grafana:
       enabled: false
