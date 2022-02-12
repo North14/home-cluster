@@ -27,3 +27,4 @@ resources:
   - robusta-charts.yaml
   - democratic-csi-charts.yaml
   - kasten-charts.yaml
+  - emberstack-charts.yaml
