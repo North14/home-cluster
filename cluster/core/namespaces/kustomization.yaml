@@ -8,3 +8,4 @@ resources:
   - monitoring.yaml
   - vpn-gateway.yaml
   - rook-ceph.yaml
+  - kasten-io.yaml
