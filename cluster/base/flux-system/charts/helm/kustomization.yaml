@@ -26,3 +26,4 @@ resources:
   - north14-charts.yaml
   - robusta-charts.yaml
   - democratic-csi-charts.yaml
+  - kasten-charts.yaml
