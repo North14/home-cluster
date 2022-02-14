@@ -8,3 +8,4 @@ resources:
   - media
   - monitoring
   - kasten-io
+  - vpn-gateway
