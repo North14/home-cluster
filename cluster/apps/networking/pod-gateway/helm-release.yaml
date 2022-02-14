@@ -24,6 +24,13 @@ spec:
         enabled: true
         type: wireguard
         configFileSecret: wireguard-vpnconfig
+        scripts:
+          up: |-
+            #!/bin/bash
+            echo "connected" > /shared/vpnstatus
+          down: |-
+            #!/bin/bash
+            echo "disconnected" > /shared/vpnstatus
         livenessProbe:
           exec:
             command:
