@@ -19,3 +19,34 @@ spec:
   values:
     routed_namespaces:
       - vpn-gateway
+    addons:
+      vpn:
+        enabled: false
+        type: wireguard
+        configFileSecret: wireguard-vpnconfig
+        livenessProbe:
+          exec:
+            command:
+              - sh
+              - -c
+              - if [ $(wget -q -O- https://ipinfo.io/country) == 'DE' ]; then exit 0; else exit $?; fi
+          initialDelaySeconds: 30
+          periodSeconds: 60
+          failureThreshold: 1
+        networkPolicy:
+          enabled: true
+          egress:
+            - to:
+              - ipBlock:
+                  cidr: 0.0.0.0/0
+              ports:
+              - port: 51820
+                protocol: UDP
+            - to:
+              - ipBlock:
+                  cidr: 10.0.0.0/8
+    settings:
+      VPN_INTERFACE: wg0
+      VPN_BLOCK_OTHER_TRAFFIC: true
+      VPN_TRAFFIC_PORT: 51820
+      VPN_LOCAL_CIDRS: "10.0.0.0/8 192.168.0.0/16"
