@@ -21,7 +21,7 @@ spec:
       - vpn-gateway
     addons:
       vpn:
-        enabled: false
+        enabled: true
         type: wireguard
         configFileSecret: wireguard-vpnconfig
         livenessProbe:
