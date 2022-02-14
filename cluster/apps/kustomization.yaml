@@ -9,3 +9,4 @@ resources:
   - monitoring
   - kasten-io
   - vpn-gateway
+  - rook-ceph
