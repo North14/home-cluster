@@ -31,7 +31,7 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/icon: "television-box"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-          external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
+          external-dns.alpha.kubernetes.io/target: "testing.${SECRET_DOMAIN}"
           external-dns/is-public: "true"
         hosts:
           - host: "plex.${SECRET_DOMAIN}"
