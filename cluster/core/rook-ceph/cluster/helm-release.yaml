@@ -30,7 +30,7 @@ spec:
     ingress:
       dashboard:
         annotations:
-          cert-manager.io/cluster-issuer: "letsencrypt-staging"
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         host:
           name: "rook.${SECRET_DOMAIN}"
@@ -38,6 +38,7 @@ spec:
         tls:
           - hosts:
               - "rook.${SECRET_DOMAIN}"
+            secretName: "rook-tls"
     cephClusterSpec:
       mon:
         count: 2

@@ -34,7 +34,7 @@ spec:
       class: traefik
       host: "k10.${SECRET_DOMAIN}"
       annotations:
-        cert-manager.io/cluster-issuer: letsencrypt-staging
+        cert-manager.io/cluster-issuer: letsencrypt-production
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
       urlPath: k10
       hosts:

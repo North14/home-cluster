@@ -27,18 +27,18 @@ spec:
         enabled: true
         ingressClassName: "traefik"
         annotations:
-          cert-manager.io/cluster-issuer: "letsencrypt-staging"
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
           hajimari.io/enable: "true"
           hajimari.io/icon: "filmstrip"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         hosts:
-          - host: "radarr.${SECRET_DOMAIN}"
+          - host: &host "radarr.${SECRET_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - hosts:
-              - "radarr.${SECRET_DOMAIN}"
+              - *host
             secretName: "radarr-tls"
     persistence:
       config:

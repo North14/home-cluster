@@ -40,7 +40,7 @@ spec:
         enabled: true
         ingressClassName: "traefik"
         annotations:
-          cert-manager.io/cluster-issuer: "letsencrypt-staging"
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
           hajimari.io/name: "qBittorrent"
           hajimari.io/enable: "true"
           hajimari.io/icon: "cloud-download"
