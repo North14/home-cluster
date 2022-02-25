@@ -4,3 +4,5 @@ resources:
   - traefik
   - pod-gateway
   - external-dns
+  - wildcard-cert
+  - echo-server
