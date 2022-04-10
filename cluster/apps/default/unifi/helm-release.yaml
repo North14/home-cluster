@@ -23,7 +23,7 @@ spec:
       UNIFI_UID: 1000
     image:
       repository: jacobalberty/unifi
-      tag: v6.5.55
+      tag: v7.0.25
     service:
       main:
         type: LoadBalancer
