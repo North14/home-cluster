@@ -37,6 +37,8 @@ spec:
         ingressClassName: "traefik"
         annotations:
           cert-manager.io/cluster-issuer: "letsencrypt-production"
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "access-point"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         hosts:
           - host: &host "unifi.${SECRET_DOMAIN}"
