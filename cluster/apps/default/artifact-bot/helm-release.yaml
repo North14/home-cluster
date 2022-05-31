@@ -30,6 +30,8 @@ spec:
         enabled: false
       startup:
         enabled: false
+      readiness:
+        enabled: false
     persistence:
       data:
         enabled: true
