@@ -31,3 +31,6 @@ Apply cluster twice due to race conditions
     kubectl apply --kustomize=./cluster/base/flux-system
 
 ---
+
+    sudo echo 8196 > /proc/sys/fs/inotify/max_user_instances
+    sudo sysctl -w net.ipv4.conf.all.src_valid_mark=1
