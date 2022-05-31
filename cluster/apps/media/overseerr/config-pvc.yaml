@@ -4,12 +4,10 @@ kind: PersistentVolumeClaim
 metadata:
   name: overseerr-config
   namespace: media
-  labels:
-    kasten.io/backup-volume: "enabled"
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: ceph-block
+  storageClassName: local-path
   resources:
     requests:
       storage: 512Mi
