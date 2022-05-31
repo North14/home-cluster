@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: echo-server
-  namespace: default
+  namespace: networking
 spec:
   interval: 5m
   chart:
@@ -19,6 +19,14 @@ spec:
     image:
       repository: docker.io/jmalloc/echo-server
       tag: 0.3.1
+    service:
+      main:
+        ports:
+          http:
+            port: 8080
+    ingress:
+      main:
+        enabled: false
     resources:
       requests:
         memory: 100Mi
