@@ -27,7 +27,7 @@ spec:
       bot_owners: "${SECRET_ARTIFACT_OWNERS}"
     probes:
       liveness:
-        enabled: true
+        enabled: false
     persistence:
       data:
         enabled: true
