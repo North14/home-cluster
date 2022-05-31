@@ -25,6 +25,14 @@ spec:
       twitch_oauth: "${SECRET_ARTIFACT_OAUTH}"
       bot_initial_channels: "${SECRET_ARTIFACT_INITIAL}"
       bot_owners: "${SECRET_ARTIFACT_OWNERS}"
+    service:
+      main:
+        ports:
+          http:
+            enabled: false
+    ingress:
+      main:
+        enabled: false
     probes:
       liveness:
         enabled: false
