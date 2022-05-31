@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: echo-server
+  name: artifact-bot
   namespace: default
 spec:
   interval: 5m
@@ -15,13 +15,29 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    fullnameOverride: echo-server
+    fullnameOverride: artifact-bot
     image:
-      repository: docker.io/jmalloc/echo-server
-      tag: 0.3.1
+      repository: ghcr.io/north14/artifact-bot
+      tag: latest
+    env:
+      TZ: "Europe/Stockholm"
+      PYTHONUNBUFFERED: "1"
+      twitch_oauth: "${SECRET_ARTIFACT_OAUTH}"
+      bot_initial_channels: "${SECRET_ARTIFACT_INITIAL}"
+      bot_owners: "${SECRET_ARTIFACT_OWNERS}"
+    service:
+      main:
+        ports:
+          http:
+            port: 443
     ingress:
       main:
         enabled: false
+    persistence:
+      data:
+        enabled: true
+        existingClaim: artifact-data
+        mountPath: /app/data
     resources:
       requests:
         memory: 100Mi
