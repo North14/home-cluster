@@ -25,14 +25,9 @@ spec:
       twitch_oauth: "${SECRET_ARTIFACT_OAUTH}"
       bot_initial_channels: "${SECRET_ARTIFACT_INITIAL}"
       bot_owners: "${SECRET_ARTIFACT_OWNERS}"
-    service:
-      main:
-        ports:
-          http:
-            port: 443
-    ingress:
-      main:
-        enabled: false
+    probes:
+      liveness:
+        enabled: true
     persistence:
       data:
         enabled: true
