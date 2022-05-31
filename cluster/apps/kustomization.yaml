@@ -7,6 +7,4 @@ resources:
   - system-upgrade
   - media
   - monitoring
-  - kasten-io
   - vpn-gateway
-  - rook-ceph
