@@ -19,11 +19,6 @@ spec:
     image:
       repository: ghcr.io/north14/artifact-bot
       tag: latest
-    persistence:
-      data:
-        enabled: true
-        existingClaim: artifact-data
-        mountPath: /app/data
     resources:
       requests:
         memory: 100Mi
