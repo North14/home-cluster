@@ -23,7 +23,7 @@ spec:
       UNIFI_UID: 1000
     image:
       repository: jacobalberty/unifi
-      tag: v7.1.66
+      tag: v7.5.176
     service:
       main:
         ports:
